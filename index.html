@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiryon Tzitzit | Armor for Your Tzitzit</title>
+<meta name="description" content="Shiryon Tzitzit is a wash-and-dryer-safe clip that keeps tzitzit strings untangled and undamaged. Preorder now to fund the first production run.">
+<link rel="icon" type="image/png" href="logo_shield.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ INTRO — unraveling strings reveal ============ -->
+<div id="intro" aria-hidden="true">
+  <svg id="intro-svg" preserveAspectRatio="xMidYMid slice"></svg>
+  <img class="intro-mark" src="logo_shield_white.png" alt="">
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <img class="brand-mark" src="logo_shield.png" alt="Shiryon Tzitzit shield logo">
+      <span class="brand-name">Shiryon Tzitzit</span>
+    </a>
+    <nav class="nav-links" id="nav-menu">
+      <a href="#video">Watch</a>
+      <a href="#shop">Shop</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#story">Our story</a>
+      <a href="#donate">Donate</a>
+    </nav>
+    <a href="#shop" class="btn btn-solid btn-small">Preorder</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <img class="hero-watermark" src="logo_shield.png" alt="">
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-copy reveal">
+      <img class="hero-hebrew" src="logo_hebrew.png" alt="שריון ציצית, Shiryon Tzitzit in Hebrew">
+      <p class="eyebrow">Shiryon means armor. Protection for what matters.</p>
+      <h1>Your tzitzit deserve<br>to survive laundry day.</h1>
+      <p class="lede">A simple clip that holds every string safe through the washer <em>and</em> the dryer. No tangles, no knots, no fraying. Preorders fund our first production mold.</p>
+      <div class="hero-actions">
+        <a href="#shop" class="btn btn-solid btn-glow">Preorder the Thin for <span id="price-hero">$18</span></a>
+        <a href="#video" class="btn btn-ghost">▶&nbsp; Watch it work</a>
+      </div>
+
+      <div class="funding" aria-label="Preorder funding progress">
+        <div class="funding-bar">
+          <div class="funding-fill" id="funding-fill"></div>
+        </div>
+        <p class="funding-text"><strong id="funding-count">0</strong> of <span id="funding-goal">250</span> preorders toward our production mold</p>
+      </div>
+    </div>
+
+    <div class="hero-media reveal delay-2">
+      <div class="hero-frame">
+        <img src="hero.jpg" alt="The Shiryon Tzitzit clip holding tzitzit strings" data-placeholder="Drop your best product photo here → hero.jpg">
+      </div>
+    </div>
+  </div>
+
+  <div class="braid-divider" aria-hidden="true">
+    <svg id="braid-divider-svg" viewBox="0 0 1200 100" preserveAspectRatio="none"></svg>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section class="section section-dark" id="video">
+  <div class="dark-glow" aria-hidden="true"></div>
+  <div class="container narrow center reveal">
+    <p class="eyebrow light">See it in action</p>
+    <h2>Thirty seconds. Zero tangles.</h2>
+    <p class="section-lede">Watch the clip go through a full wash and come out with every string perfect.</p>
+  </div>
+  <div class="video-frame reveal delay-1">
+    <iframe id="demo-video"
+      src="https://www.youtube.com/embed/GMiZxOrvN7g"
+      title="Shiryon Tzitzit product demo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- ============ PROBLEM / SOLUTION ============ -->
+<section class="section">
+  <div class="container split">
+    <figure class="compare reveal">
+      <img src="before.jpg" alt="Tangled tzitzit strings after a wash" data-placeholder="Photo of tangled strings → before.jpg">
+      <figcaption>Without Shiryon</figcaption>
+    </figure>
+    <figure class="compare reveal delay-1">
+      <img src="after.jpg" alt="Perfect tzitzit strings protected by the Shiryon clip" data-placeholder="Photo of protected strings → after.jpg">
+      <figcaption>With Shiryon</figcaption>
+    </figure>
+    <div class="split-copy reveal delay-2">
+      <p class="eyebrow">The problem</p>
+      <h2>Every wash, the same knots.</h2>
+      <p>Tzitzit strings tangle, twist, and fray in the machine. Untangling them wastes your time and shortens the life of a garment you use every day. Shiryon threads all four tassels into one secure clip, so they come out of the wash exactly as they went in.</p>
+      <ul class="checks">
+        <li>Holds all strings through washer <strong>and dryer</strong></li>
+        <li>Wraps on in seconds with the attached Velcro strap</li>
+        <li>Durable and reusable, one clip holds all four tassels</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP ============ -->
+<section class="section section-tint" id="shop">
+  <div class="container center reveal">
+    <p class="eyebrow">Preorder</p>
+    <h2>Choose your size</h2>
+    <p class="section-lede">Sized to the length of your tzitzit strings. The Thin is in production now. Medium and Thick open as soon as the first run ships.</p>
+  </div>
+
+  <div class="container cards">
+    <!-- THIN -->
+    <article class="card card-available reveal">
+      <div class="card-media">
+        <img src="thin.jpg" alt="Shiryon Tzitzit Thin, for strings up to 50 cm" data-placeholder="Thin product photo → thin.jpg">
+      </div>
+      <div class="card-body">
+        <span class="badge badge-live">Preorder now</span>
+        <h3>Thin</h3>
+        <p class="card-spec">For strings up to <strong>50 cm</strong></p>
+        <p class="card-price" id="price-thin">$18</p>
+        <a class="btn btn-solid btn-block js-pay" data-product="thin" href="#">Preorder now</a>
+        <p class="card-note">Preorders fund the production mold. Estimated shipping: <span id="ship-estimate">Fall 2026</span>.</p>
+      </div>
+    </article>
+
+    <!-- MEDIUM -->
+    <article class="card card-available reveal delay-1">
+      <div class="card-media">
+        <img src="medium.jpg" alt="Shiryon Tzitzit Medium, for strings up to 55 cm" data-placeholder="Medium product photo → medium.jpg">
+      </div>
+      <div class="card-body">
+        <span class="badge badge-live">Preorder</span>
+        <h3>Medium</h3>
+        <p class="card-spec">For strings up to <strong>55 cm</strong></p>
+        <p class="card-price" id="price-medium">$18</p>
+        <div class="checkout-flow">
+          <button type="button" class="btn btn-solid btn-block js-checkout">Checkout</button>
+          <div class="stock-panel" hidden>
+            <p class="stock-title">Reserve the Medium</p>
+            <p class="stock-text">The Medium is made in our next production run. Enter your email to reserve yours and you'll get first access the moment it ships.</p>
+            <form class="waitlist js-waitlist" data-size="Medium (55 cm)">
+              <label class="visually-hidden" for="wl-medium">Email to reserve the Medium</label>
+              <input id="wl-medium" type="email" name="email" placeholder="you@email.com" required>
+              <button type="submit" class="btn btn-outline btn-block">Reserve my spot</button>
+              <p class="form-msg" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- THICK -->
+    <article class="card card-available reveal delay-2">
+      <div class="card-media">
+        <img src="thick.jpg" alt="Shiryon Tzitzit Thick, for strings up to 60 cm" data-placeholder="Thick product photo → thick.jpg">
+      </div>
+      <div class="card-body">
+        <span class="badge badge-live">Preorder</span>
+        <h3>Thick</h3>
+        <p class="card-spec">For strings up to <strong>60 cm</strong></p>
+        <p class="card-price" id="price-thick">$18</p>
+        <div class="checkout-flow">
+          <button type="button" class="btn btn-solid btn-block js-checkout">Checkout</button>
+          <div class="stock-panel" hidden>
+            <p class="stock-title">Reserve the Thick</p>
+            <p class="stock-text">The Thick is made in our next production run. Enter your email to reserve yours and you'll get first access the moment it ships.</p>
+            <form class="waitlist js-waitlist" data-size="Thick (60 cm)">
+              <label class="visually-hidden" for="wl-thick">Email to reserve the Thick</label>
+              <input id="wl-thick" type="email" name="email" placeholder="you@email.com" required>
+              <button type="submit" class="btn btn-outline btn-block">Reserve my spot</button>
+              <p class="form-msg" role="status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section">
+  <div class="container center reveal">
+    <p class="eyebrow">How it works</p>
+    <h2>On in seconds</h2>
+  </div>
+  <div class="container steps">
+    <div class="step reveal">
+      <div class="step-media"><img src="step1.jpg" alt="Threading all four tassels through the oval tunnel" data-placeholder="Step 1 photo → step1.jpg"></div>
+      <h3>Thread</h3>
+      <p>Thread the strings of all four tassels through the oval tunnel.</p>
+    </div>
+    <div class="step reveal delay-1">
+      <div class="step-media"><img src="step2.jpg" alt="Wrapping the Velcro strap around the Shiryon oval" data-placeholder="Step 2 photo → step2.jpg"></div>
+      <h3>Wrap</h3>
+      <p>Wrap the Velcro strap attached at the center around the oval. The strings are held secure.</p>
+    </div>
+    <div class="step reveal delay-2">
+      <div class="step-media"><img src="step3.jpg" alt="Tzitzit coming out of the dryer with perfect strings" data-placeholder="Step 3 photo → step3.jpg"></div>
+      <h3>Wash &amp; dry</h3>
+      <p>Machine wash, machine dry. Unwrap to strings that look brand new.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section section-tint" id="gallery">
+  <div class="container center reveal">
+    <p class="eyebrow">Gallery</p>
+    <h2>Up close</h2>
+  </div>
+  <div class="container gallery">
+    <img class="reveal" src="gallery1.jpg" alt="Shiryon Tzitzit product detail" data-placeholder="Gallery photo → gallery1.jpg">
+    <img class="reveal delay-1" src="gallery2.jpg" alt="Shiryon Tzitzit in use" data-placeholder="Gallery photo → gallery2.jpg">
+    <img class="reveal delay-2" src="gallery3.jpg" alt="Shiryon Tzitzit lifestyle photo" data-placeholder="Gallery photo → gallery3.jpg">
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="section section-dark" id="story">
+  <div class="dark-glow" aria-hidden="true"></div>
+  <div class="container narrow reveal">
+    <img class="story-logo" src="logo_full_white.png" alt="Shiryon Tzitzit logo, שריון ציצית">
+    <p class="eyebrow light center-text">Why preorder?</p>
+    <h2 class="center-text">Your order builds the mold.</h2>
+    <p>Shiryon Tzitzit is a small, founder-run project. Injection molding is what makes the clip affordable and durable, but the mold itself is the single biggest upfront cost. Every preorder goes directly toward that tooling, and every preorder customer is first in line when the run ships.</p>
+    <p>The name comes from the Hebrew word <em>shiryon</em>, which means armor. That's the whole idea: a small piece of armor for a mitzvah you carry with you every day.</p>
+    <p>Shiryon Tzitzit is designed and built by Ethan Cohen, an informatics student at Arizona State University's Barrett Honors College focusing on UI/UX design and data analytics. He also runs Cone Media, a web studio that builds custom sites for small businesses, and he brings that same care for thoughtful design to Shiryon.</p>
+    <div class="story-sign">
+      <img src="founder.jpg" alt="Ethan Cohen, founder of Shiryon Tzitzit" data-placeholder="Founder photo → founder.jpg">
+      <div>
+        <p class="sign-name">Ethan Cohen</p>
+        <p class="sign-role">Founder, Shiryon Tzitzit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DONATE ============ -->
+<section class="section" id="donate">
+  <div class="container donate-box reveal">
+    <div>
+      <p class="eyebrow">Support the project</p>
+      <h2>Not ready to preorder? Help us get to the mold.</h2>
+      <p>Every contribution, any size, goes straight to tooling and the first production run. Donors are thanked by name in our launch update (unless you'd rather stay anonymous).</p>
+    </div>
+    <div class="donate-actions">
+      <a class="btn btn-solid btn-glow js-donate" href="#">Donate</a>
+      <p class="card-note">Secure checkout via PayPal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand-block">
+      <img class="footer-shield" src="logo_shield_white.png" alt="">
+      <img class="footer-hebrew" src="logo_hebrew_white.png" alt="שריון ציצית">
+      <p class="footer-tag">Armor for your tzitzit.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#shop">Preorder</a>
+      <a href="#donate">Donate</a>
+      <a href="mailto:ethanacohen04@gmail.com">Contact</a>
+    </div>
+    <p class="footer-legal">© <span id="year"></span> Shiryon Tzitzit. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
