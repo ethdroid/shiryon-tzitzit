@@ -18,7 +18,7 @@ const CONFIG = {
   // Sign up free at formspree.io, create a form, and paste its ID
   // (looks like "xqkrgbba"). Every submission is saved in your
   // Formspree dashboard as a list you can export to CSV.
-  formspreeId: "REPLACE_WITH_YOUR_FORMSPREE_ID",
+  formspreeId: "mzepogpk",
 
   // --- Pricing & shipping ---
   priceThin: "$36",
