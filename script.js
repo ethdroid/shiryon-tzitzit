@@ -4,15 +4,15 @@
    ============================================================ */
 const CONFIG = {
   // --- Preorder checkout (Thin) ---
-  // Create a free Stripe Payment Link (stripe.com → Payment Links)
-  // or a PayPal.me / PayPal button link, then paste it here:
+  // Stripe payment link for the Thin preorder. Medium and Thick
+  // have no payment link on purpose; they capture emails instead.
   paymentLinks: {
-    thin: "REPLACE_WITH_YOUR_STRIPE_OR_PAYPAL_LINK",
+    thin: "https://buy.stripe.com/28EeVd0DgeUP76QcE0d7q01",
   },
 
   // --- Donate button ---
-  // Create at paypal.com → "PayPal Donate button", or use paypal.me/yourname
-  donateLink: "REPLACE_WITH_YOUR_PAYPAL_DONATE_LINK",
+  // Stripe payment link for donations
+  donateLink: "https://buy.stripe.com/9B66oHbhU283ezi5byd7q00",
 
   // --- Waitlist email capture (Medium & Thick) ---
   // Sign up free at formspree.io, create a form, and paste its ID
@@ -21,9 +21,9 @@ const CONFIG = {
   formspreeId: "REPLACE_WITH_YOUR_FORMSPREE_ID",
 
   // --- Pricing & shipping ---
-  priceThin: "$18",
-  priceMedium: "$18",   // shown on the Medium card (checkout reveals out of stock)
-  priceThick: "$18",    // shown on the Thick card (checkout reveals out of stock)
+  priceThin: "$36",
+  priceMedium: "$36",   // shown on the Medium card (checkout reveals the reserve panel)
+  priceThick: "$36",    // shown on the Thick card (checkout reveals the reserve panel)
   shipEstimate: "Fall 2026",
 
   // --- Funding progress bar ---
