@@ -14,13 +14,13 @@ A fully static site (HTML/CSS/JS only) built for free hosting on GitHub Pages.
 Open `script.js` — everything you need to edit is in the `CONFIG` block at the top.
 
 ### Preorders (Thin)
-Create a **Stripe Payment Link** (stripe.com → Products → Payment Links — supports quantity selection, no code needed) *or* a PayPal payment link. Paste it into:
+The Thin preorder uses a Stripe payment link, already connected:
 ```js
 paymentLinks: { thin: "https://buy.stripe.com/..." }
 ```
 
 ### Donations
-Create a PayPal Donate button (paypal.com/donate/buttons) or just use your `paypal.me/yourname` link. Paste into `donateLink`.
+Donations use a Stripe payment link, already connected in `donateLink`.
 
 ### Medium/Thick waitlist (your email list)
 1. Sign up free at **formspree.io** and create a form.
