@@ -489,3 +489,209 @@ if (navToggle && navMenu) {
     if (!e.target.closest(".nav-inner")) setOpen(false);
   });
 }
+
+/* ============================================================
+   CART
+   Quantity lives here; shipping address and payment are
+   collected by Stripe on the next page (authoritative, tied
+   to the actual payment). Order details are emailed to you
+   via Formspree the moment "Continue to payment" is clicked.
+   ============================================================ */
+const PRODUCTS = {
+  thin: { name: "Shiryon Tzitzit - Thin", spec: "Strings up to 50 cm", img: "thin.jpg",
+          price: parseFloat(String(CONFIG.priceThin).replace(/[^0-9.]/g, "")) || 36 },
+};
+
+const cartEls = {
+  btn: document.getElementById("cart-btn"),
+  count: document.getElementById("cart-count"),
+  drawer: document.getElementById("cart-drawer"),
+  overlay: document.getElementById("cart-overlay"),
+  close: document.getElementById("cart-close"),
+  items: document.getElementById("cart-items"),
+  empty: document.getElementById("cart-empty"),
+  foot: document.getElementById("cart-foot"),
+  subtotal: document.getElementById("cart-subtotal"),
+  checkout: document.getElementById("cart-checkout"),
+  email: document.getElementById("buyer-email"),
+  reminder: document.getElementById("qty-reminder"),
+  reminderN: document.getElementById("qty-reminder-n"),
+  msg: document.getElementById("cart-msg"),
+};
+
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem("shiryonCart") || "{}"); } catch { cart = {}; }
+
+function saveCart() {
+  try { localStorage.setItem("shiryonCart", JSON.stringify(cart)); } catch {}
+}
+
+function cartQty() {
+  return Object.values(cart).reduce((a, b) => a + b, 0);
+}
+
+function money(n) {
+  return "$" + (Math.round(n * 100) / 100).toLocaleString(undefined, {
+    minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 });
+}
+
+function renderCart() {
+  const total = cartQty();
+  if (cartEls.count) {
+    cartEls.count.textContent = total;
+    cartEls.count.classList.toggle("show", total > 0);
+  }
+  if (!cartEls.items) return;
+
+  cartEls.items.innerHTML = "";
+  let subtotal = 0;
+
+  Object.entries(cart).forEach(([key, qty]) => {
+    const p = PRODUCTS[key];
+    if (!p || qty < 1) return;
+    subtotal += p.price * qty;
+
+    const li = document.createElement("li");
+    li.className = "cart-item";
+    li.innerHTML =
+      '<img src="' + p.img + '" alt="">' +
+      '<div>' +
+        '<p class="cart-item-name">' + p.name + '</p>' +
+        '<p class="cart-item-spec">' + p.spec + '</p>' +
+        '<div class="cart-item-controls">' +
+          '<button type="button" class="qty-btn" data-key="' + key + '" data-step="-1" aria-label="Decrease quantity">&minus;</button>' +
+          '<span class="qty-num">' + qty + '</span>' +
+          '<button type="button" class="qty-btn" data-key="' + key + '" data-step="1" aria-label="Increase quantity">+</button>' +
+        '</div>' +
+        '<button type="button" class="cart-remove" data-remove="' + key + '">Remove</button>' +
+      '</div>' +
+      '<span class="cart-item-price">' + money(p.price * qty) + '</span>';
+    cartEls.items.appendChild(li);
+  });
+
+  if (cartEls.empty) cartEls.empty.hidden = total > 0;
+  if (cartEls.foot) cartEls.foot.hidden = total === 0;
+  if (cartEls.subtotal) cartEls.subtotal.textContent = money(subtotal);
+  if (cartEls.reminderN) cartEls.reminderN.textContent = total;
+  // only worth showing when it is not the Stripe default of 1
+  if (cartEls.reminder) cartEls.reminder.hidden = total <= 1;
+}
+
+function openCart(open) {
+  if (!cartEls.drawer) return;
+  cartEls.drawer.classList.toggle("open", open);
+  cartEls.drawer.setAttribute("aria-hidden", !open);
+  cartEls.overlay.hidden = !open;
+  requestAnimationFrame(() => cartEls.overlay.classList.toggle("show", open));
+  document.body.classList.toggle("cart-lock", open);
+}
+
+function addToCart(key, qty) {
+  cart[key] = (cart[key] || 0) + qty;
+  if (cart[key] > 99) cart[key] = 99;
+  saveCart(); renderCart();
+  cartEls.btn?.classList.add("bump");
+  setTimeout(() => cartEls.btn?.classList.remove("bump"), 400);
+  openCart(true);
+}
+
+// product card quantity steppers
+document.querySelectorAll(".qty-row").forEach((row) => {
+  const input = row.querySelector(".qty-input");
+  row.querySelectorAll(".qty-btn").forEach((b) =>
+    b.addEventListener("click", () => {
+      const v = Math.max(1, Math.min(99, (parseInt(input.value, 10) || 1) + parseInt(b.dataset.step, 10)));
+      input.value = v;
+    })
+  );
+});
+
+// add to cart
+document.querySelectorAll(".js-add-cart").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const key = btn.dataset.product;
+    const input = document.getElementById("qty-" + key);
+    const qty = Math.max(1, Math.min(99, parseInt(input?.value, 10) || 1));
+    addToCart(key, qty);
+  });
+});
+
+// drawer open/close
+cartEls.btn?.addEventListener("click", () => openCart(true));
+cartEls.close?.addEventListener("click", () => openCart(false));
+cartEls.overlay?.addEventListener("click", () => openCart(false));
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") openCart(false);
+});
+
+// quantity + remove inside the drawer
+cartEls.items?.addEventListener("click", (e) => {
+  const step = e.target.closest("[data-step]");
+  const rm = e.target.closest("[data-remove]");
+  if (step) {
+    const k = step.dataset.key;
+    cart[k] = Math.max(0, Math.min(99, (cart[k] || 0) + parseInt(step.dataset.step, 10)));
+    if (!cart[k]) delete cart[k];
+    saveCart(); renderCart();
+  } else if (rm) {
+    delete cart[rm.dataset.remove];
+    saveCart(); renderCart();
+  }
+});
+
+// checkout: email the order to you, then hand off to Stripe
+cartEls.checkout?.addEventListener("click", async () => {
+  const email = cartEls.email.value.trim();
+  const msg = cartEls.msg;
+
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.textContent = "That email does not look right. Leave it blank to skip.";
+    msg.className = "form-msg err";
+    return;
+  }
+
+  const lines = Object.entries(cart)
+    .map(([k, q]) => PRODUCTS[k].name + " x " + q + " = " + money(PRODUCTS[k].price * q))
+    .join("\n");
+  const subtotal = Object.entries(cart)
+    .reduce((s, [k, q]) => s + PRODUCTS[k].price * q, 0);
+
+  cartEls.checkout.disabled = true;
+  msg.textContent = "Taking you to secure payment...";
+  msg.className = "form-msg ok";
+
+  // Heads-up email so you see intent even if payment is abandoned.
+  // Never blocks the sale.
+  if (!CONFIG.formspreeId.startsWith("REPLACE")) {
+    try {
+      await fetch("https://formspree.io/f/" + CONFIG.formspreeId, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "Shiryon checkout started" + (email ? ": " + email : ""),
+          source: "preorder-cart",
+          email: email || "(not provided)",
+          order: lines,
+          quantity: cartQty(),
+          subtotal: money(subtotal),
+          note: "Started checkout. Confirm against Stripe for the completed order.",
+        }),
+      });
+    } catch { /* ignore */ }
+  }
+
+  const link = CONFIG.paymentLinks.thin;
+  if (!link || link.startsWith("REPLACE")) {
+    msg.textContent = "Checkout is not connected yet.";
+    msg.className = "form-msg err";
+    cartEls.checkout.disabled = false;
+    return;
+  }
+  let url = link;
+  if (email) {
+    url += (url.includes("?") ? "&" : "?") + "prefilled_email=" + encodeURIComponent(email);
+  }
+  setTimeout(() => { window.location.href = url; }, 400);
+});
+
+renderCart();
