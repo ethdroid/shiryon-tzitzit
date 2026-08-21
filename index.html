@@ -29,6 +29,7 @@
     <nav class="nav-links" id="nav-menu">
       <a href="#video">Watch</a>
       <a href="#shop">Shop</a>
+      <a href="#mold">The mold</a>
       <a href="#gallery">Gallery</a>
       <a href="#story">Our story</a>
       <a href="#donate">Donate</a>
@@ -58,7 +59,7 @@
       <h1>Your tzitzit deserve<br>to survive laundry day.</h1>
       <p class="lede">A simple clip that holds every string safe through the washer <em>and</em> the dryer. No tangles, no knots, no fraying. Preorders fund our first production mold.</p>
       <div class="hero-actions">
-        <a href="#shop" class="btn btn-solid btn-glow">Preorder the Thin for <span id="price-hero">$18</span></a>
+        <a href="#shop" class="btn btn-solid btn-glow">Preorder a pack of 4 for <span id="price-hero">$18</span></a>
         <a href="#video" class="btn btn-ghost">▶&nbsp; Watch it work</a>
       </div>
 
@@ -66,7 +67,7 @@
         <div class="funding-bar">
           <div class="funding-fill" id="funding-fill"></div>
         </div>
-        <p class="funding-text"><strong id="funding-count">0</strong> of <span id="funding-goal">250</span> preorders toward our production mold</p>
+        <p class="funding-text"><strong id="funding-count">0</strong> of <span id="funding-goal">250</span> packs preordered toward the steel mold</p>
       </div>
     </div>
 
@@ -136,20 +137,22 @@
     <!-- THIN -->
     <article class="card card-available reveal">
       <div class="card-media">
-        <img src="thin.jpg" alt="Shiryon Tzitzit Thin, for strings up to 50 cm" data-placeholder="Thin product photo → thin.jpg">
+        <img src="thin.jpg" alt="A pack of four Shiryon Tzitzit clips, Thin size for strings up to 50 cm" data-placeholder="Thin product photo → thin.jpg">
+        <span class="pack-badge"><em>&times;</em>4</span>
       </div>
       <div class="card-body">
         <span class="badge badge-live">Preorder now</span>
-        <h3>Thin</h3>
-        <p class="card-spec">For strings up to <strong>50 cm</strong></p>
-        <p class="card-price" id="price-thin">$18</p>
+        <h3>Thin <span class="pack-tag">Pack of 4</span></h3>
+        <p class="card-spec">Four clips. For strings up to <strong>50 cm</strong></p>
+        <p class="card-price" id="price-thin">$36</p>
+        <p class="per-unit" id="per-unit-thin">$9 per clip</p>
         <div class="qty-row">
           <button type="button" class="qty-btn" data-step="-1" aria-label="Decrease quantity">&minus;</button>
           <input class="qty-input" id="qty-thin" type="number" min="1" max="99" value="1" aria-label="Quantity">
           <button type="button" class="qty-btn" data-step="1" aria-label="Increase quantity">+</button>
         </div>
         <button type="button" class="btn btn-solid btn-block js-add-cart" data-product="thin">Add to cart</button>
-        <p class="card-note">Preorders fund the production mold. Estimated shipping: <span id="ship-estimate">Fall 2026</span>.</p>
+        <p class="card-note">Part of every pack goes straight into the steel mold. Estimated shipping: <span id="ship-estimate">Fall 2026</span>.</p>
       </div>
     </article>
 
@@ -242,6 +245,59 @@
     <img class="reveal" src="gallery1.jpg" alt="Shiryon Tzitzit product detail" data-placeholder="Gallery photo → gallery1.jpg">
     <img class="reveal delay-1" src="gallery2.jpg" alt="Shiryon Tzitzit in use" data-placeholder="Gallery photo → gallery2.jpg">
     <img class="reveal delay-2" src="gallery3.jpg" alt="Shiryon Tzitzit lifestyle photo" data-placeholder="Gallery photo → gallery3.jpg">
+  </div>
+</section>
+
+
+<!-- ============ THE MOLD ============ -->
+<section class="section section-dark" id="mold">
+  <div class="dark-glow" aria-hidden="true"></div>
+  <div class="container narrow center reveal">
+    <p class="eyebrow light">Where your money goes</p>
+    <h2>Every preorder builds the mold.</h2>
+    <p class="section-lede">A steel injection mold is the single thing standing between a hand made prototype and a product any family can afford. It is expensive once, then it makes clips forever.</p>
+  </div>
+
+  <div class="container mold-flow">
+    <div class="mold-stage reveal">
+      <div class="mold-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 18h32l-3 22H11z"/><path d="M17 18v-5a7 7 0 0 1 14 0v5"/>
+        </svg>
+      </div>
+      <h3>1. You preorder</h3>
+      <p>Your pack of four is reserved and your payment goes into the tooling fund. Nothing else.</p>
+    </div>
+
+    <div class="mold-arrow reveal delay-1" aria-hidden="true"><span></span></div>
+
+    <div class="mold-stage reveal delay-1">
+      <div class="mold-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="30" height="14" rx="2"/><rect x="9" y="25" width="30" height="14" rx="2"/>
+          <path d="M24 23v2"/><path d="M18 16h12"/><path d="M18 32h12"/>
+        </svg>
+      </div>
+      <h3>2. The mold is cut</h3>
+      <p>Two halves of hardened steel, machined to the exact shape of the clip. This is the real cost, and it is paid once.</p>
+    </div>
+
+    <div class="mold-arrow reveal delay-2" aria-hidden="true"><span></span></div>
+
+    <div class="mold-stage reveal delay-2">
+      <div class="mold-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="15"/><path d="M24 15v9l6 4"/>
+        </svg>
+      </div>
+      <h3>3. The price drops</h3>
+      <p>With the mold paid for, each clip costs a fraction to produce. That saving goes to every family that buys after you.</p>
+    </div>
+  </div>
+
+  <div class="container mold-close reveal">
+    <p>This is why preordering matters more than an ordinary purchase. You are not just buying four clips, you are making the fifth thousand clip cheap enough that frum families anywhere in the world can protect their tzitzit without thinking twice about the cost.</p>
+    <a href="#shop" class="btn btn-solid btn-glow">Preorder a pack of 4</a>
   </div>
 </section>
 
