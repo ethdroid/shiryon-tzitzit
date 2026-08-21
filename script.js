@@ -42,6 +42,11 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 document.querySelectorAll("#price-thin, #price-hero").forEach((el) => {
   el.textContent = CONFIG.priceThin;
 });
+const perUnit = document.getElementById("per-unit-thin");
+if (perUnit) {
+  const each = (parseFloat(String(CONFIG.priceThin).replace(/[^0-9.]/g, "")) || 36) / 4;
+  perUnit.textContent = "$" + (Math.round(each * 100) / 100) + " per clip";
+}
 const priceMedium = document.getElementById("price-medium");
 if (priceMedium) priceMedium.textContent = CONFIG.priceMedium;
 const priceThick = document.getElementById("price-thick");
@@ -498,7 +503,7 @@ if (navToggle && navMenu) {
    via Formspree the moment "Continue to payment" is clicked.
    ============================================================ */
 const PRODUCTS = {
-  thin: { name: "Shiryon Tzitzit - Thin", spec: "Strings up to 50 cm", img: "thin.jpg",
+  thin: { name: "Thin, pack of 4", spec: "Four clips, strings up to 50 cm", img: "thin.jpg",
           price: parseFloat(String(CONFIG.priceThin).replace(/[^0-9.]/g, "")) || 36 },
 };
 
