@@ -25,11 +25,6 @@ const CONFIG = {
   priceMedium: "$36",   // shown on the Medium card (checkout reveals the reserve panel)
   priceThick: "$36",    // shown on the Thick card (checkout reveals the reserve panel)
   shipEstimate: "Fall 2026",
-
-  // --- Funding progress bar ---
-  // Update preordersSoFar by hand as orders come in, then push to GitHub.
-  preordersSoFar: 0,
-  preorderGoal: 250,
 };
 
 /* ============================================================
@@ -69,33 +64,6 @@ document.querySelectorAll(".js-checkout").forEach((btn) => {
     }, reducedMotion ? 0 : 650);
   });
 });
-
-// ---- Funding bar + animated counter ----
-const fill = document.getElementById("funding-fill");
-const count = document.getElementById("funding-count");
-const goal = document.getElementById("funding-goal");
-if (fill && count && goal) {
-  goal.textContent = CONFIG.preorderGoal.toLocaleString();
-  const pct = Math.min(100, (CONFIG.preordersSoFar / CONFIG.preorderGoal) * 100);
-
-  if (reducedMotion) {
-    count.textContent = CONFIG.preordersSoFar.toLocaleString();
-    fill.style.width = pct + "%";
-  } else {
-    setTimeout(() => (fill.style.width = pct + "%"), 400);
-    // count-up animation
-    const target = CONFIG.preordersSoFar;
-    const dur = 1200;
-    const start = performance.now();
-    function tick(now) {
-      const t = Math.min(1, (now - start) / dur);
-      const eased = 1 - Math.pow(1 - t, 3);
-      count.textContent = Math.round(target * eased).toLocaleString();
-      if (t < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-}
 
 // ---- Preorder buttons ----
 document.querySelectorAll(".js-pay").forEach((btn) => {
